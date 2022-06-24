@@ -24,7 +24,7 @@ class _ConsoleScreenState extends State<ConsoleScreen> {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
       ConsoleStorage.shared.resetUnreadCount();
     });
   }
