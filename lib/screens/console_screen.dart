@@ -171,7 +171,7 @@ class _ConsoleScreenState extends State<ConsoleScreen> {
   void _scrollToTop() {
     if (ConsoleStorage.shared.logs.isEmpty) return;
     _controller.animateTo(
-      _controller.position.minScrollExtent,
+      _controller.position.maxScrollExtent,
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
@@ -180,7 +180,7 @@ class _ConsoleScreenState extends State<ConsoleScreen> {
   void _scrollToBottom() {
     if (ConsoleStorage.shared.logs.isEmpty) return;
     _controller.animateTo(
-      _controller.position.maxScrollExtent,
+      _controller.position.minScrollExtent,
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
