@@ -8,10 +8,10 @@ Base log type:
 - `error` (<span style="color:red">Red color text</span>)
 
 <p float="left">
-  <img src="./images/1.PNG" width="24%" />
-  <img src="./images/2.PNG" width="24%" /> 
-  <img src="./images/3.PNG" width="24%" />
-  <img src="./images/4.PNG" width="24%" />
+  <img src="https://i.imgur.com/Ektz07x.png" width="24%" />
+  <img src="https://i.imgur.com/kTuKpig.png" width="24%" /> 
+  <img src="https://i.imgur.com/yvcMzuC.png" width="24%" />
+  <img src="https://i.imgur.com/ya2mg3q.png" width="24%" />
 </p>
 
 ## <span style="color:orange">Installation</span>
