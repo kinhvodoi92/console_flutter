@@ -1,18 +1,62 @@
 # console_flutter
 
-A new Flutter plugin project.
+A simple Flutter package project to store, view, and manage app console log, API logs.
 
-## Getting Started
+Base log type:
+- `verbose` (<span style="color:black">Default, with black color text</span>)
+- `info` (<span style="color:blue">Blue color text</span>)
+- `error` (<span style="color:red">Red color text</span>)
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+<p float="left">
+  <img src="https://raw.githubusercontent.com/kinhvodoi92/console_flutter/images/1.PNG" width="24%" />
+  <img src="https://raw.githubusercontent.com/kinhvodoi92/console_flutter/images/2.PNG" width="24%" /> 
+  <img src="https://raw.githubusercontent.com/kinhvodoi92/console_flutter/images/3.PNG" width="24%" />
+  <img src="https://raw.githubusercontent.com/kinhvodoi92/console_flutter/images/4.PNG" width="24%" />
+</p>
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## <span style="color:orange">Installation</span>
 
-The plugin project was generated without specifying the `--platforms` flag, no platforms are currently supported.
-To add platforms, run `flutter create -t plugin --platforms <platforms> .` in this directory.
-You can also find a detailed instruction on how to add platforms in the `pubspec.yaml` at https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms.
+In the `dependencies:` section of your `pubspec.yaml`, add the following line:
+
+```yaml
+dependencies:
+  console_flutter: <latest_version>
+```
+
+## <span style="color:orange">Usage</span>
+
+In main function
+```dart
+import 'package:console_flutter/console_flutter.dart';
+
+void main() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    Console.logEnabled(kDebugMode); // false will ignore Console view
+    runApp(MyApp());
+}
+```
+- ### Method 1: WrapperWidget
+
+
+In your app
+```dart
+import 'package:console_flutter/console_flutter.dart';
+
+class MyApp extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        ...
+        body: ConsoleWrapper(
+            child: MyHomePage(),
+        ),
+    );
+  }
+}
+```
+- ### Method 2: Custom Navigate
+Custom your view and action to open Logs Screen
+```dart
+import 'package:console_flutter/console_flutter.dart';
+
+Console.showConsoleLog(context);
+```
