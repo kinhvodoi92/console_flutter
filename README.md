@@ -8,10 +8,10 @@ Base log type:
 - `error` (<span style="color:red">Red color text</span>)
 
 <p float="left">
-  <img src="https://raw.githubusercontent.com/kinhvodoi92/console_flutter/images/1.PNG" width="24%" />
-  <img src="https://raw.githubusercontent.com/kinhvodoi92/console_flutter/images/2.PNG" width="24%" /> 
-  <img src="https://raw.githubusercontent.com/kinhvodoi92/console_flutter/images/3.PNG" width="24%" />
-  <img src="https://raw.githubusercontent.com/kinhvodoi92/console_flutter/images/4.PNG" width="24%" />
+  <img src="./images/1.PNG" width="24%" />
+  <img src="./images/2.PNG" width="24%" /> 
+  <img src="./images/3.PNG" width="24%" />
+  <img src="./images/4.PNG" width="24%" />
 </p>
 
 ## <span style="color:orange">Installation</span>
