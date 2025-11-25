@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 
 enum LogItemType { info, error, verbose }
@@ -20,6 +22,7 @@ class ConsoleStorage {
   bool enabled = false;
   final ValueNotifier<List<LogItem>> _logs = ValueNotifier([]);
   final ValueNotifier<int> unreadCount = ValueNotifier(0);
+  late final logZ;
 
   ValueNotifier<List<LogItem>> get logsNotifier {
     return _logs;
@@ -37,7 +40,27 @@ class ConsoleStorage {
     unreadCount.value = 0;
   }
 
+  Future<File> zipLog() async {
+    if (logZ == null) {
+      throw Exception("LogZ is not initialized.");
+    }
+    return await logZ.zipLog();
+  }
+
+  void zipToShareLog() {
+    if (logZ == null) {
+      throw Exception("LogZ is not initialized.");
+    }
+    logZ.zipToShareLog();
+  }
+
   void _addLog(LogItem item) {
+    if (logZ != null) {
+      logZ.logToFile(
+        '${item.time.toIso8601String()} [${item.type.name}]:\n${item.content}',
+      );
+    }
+
     if (kDebugMode) {
       print(item.content);
     }

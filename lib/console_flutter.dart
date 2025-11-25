@@ -5,13 +5,32 @@
 // platforms in the `pubspec.yaml` at
 // https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms.
 
+import 'dart:io';
+
 import 'package:console_flutter/managers/console_storage.dart';
 import 'package:console_flutter/screens/console_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:logz/logz.dart';
 
 class Console {
   static void logEnabled(bool enabled) {
     ConsoleStorage.shared.enabled = enabled;
+  }
+
+  static void logFileEnabled(String zipPassword, String logFilePrefix, bool printLogs) {
+    ConsoleStorage.shared.logZ = LogZ(
+      zipPassword: zipPassword,
+      logFilePrefix: logFilePrefix,
+      printLogs: printLogs,
+    );
+  }
+
+  static Future<File> zipLog() async {
+    return await ConsoleStorage.shared.zipLog();
+  }
+
+  static void zipToShareLog() async {
+    ConsoleStorage.shared.zipToShareLog();
   }
 
   static void showConsoleLog(BuildContext context) {
@@ -19,8 +38,7 @@ class Console {
       context: context,
       builder: (context) => ConsoleScreen(),
       isScrollControlled: true,
-      constraints:
-          BoxConstraints(maxHeight: MediaQuery.of(context).size.height - 40),
+      constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height - 40),
     );
   }
 }
