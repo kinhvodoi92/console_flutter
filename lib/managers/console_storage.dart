@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
+import 'package:logz/logz.dart';
 
 /// An enumeration representing the type of log item.
 enum LogItemType { info, error, verbose }
@@ -27,7 +28,7 @@ class ConsoleStorage {
   bool enabled = false;
   final ValueNotifier<List<LogItem>> _logs = ValueNotifier([]);
   final ValueNotifier<int> unreadCount = ValueNotifier(0);
-  late final logZ;
+  LogZ? logZ;
 
   ValueNotifier<List<LogItem>> get logsNotifier {
     return _logs;
@@ -52,7 +53,7 @@ class ConsoleStorage {
     if (logZ == null) {
       throw Exception("LogZ is not initialized.");
     }
-    return await logZ.zipLog();
+    return await logZ!.zipLog();
   }
 
   /// Zips the log file and initiates sharing.
@@ -60,12 +61,12 @@ class ConsoleStorage {
     if (logZ == null) {
       throw Exception("LogZ is not initialized.");
     }
-    logZ.zipToShareLog();
+    logZ!.zipToShareLog();
   }
 
   void _addLog(LogItem item) {
     if (logZ != null) {
-      logZ.logToFile(
+      logZ!.logToFile(
         '${item.time.toIso8601String()} [${item.type.name}]:\n${item.content}',
       );
     }
