@@ -2,8 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 
+/// An enumeration representing the type of log item.
 enum LogItemType { info, error, verbose }
 
+/// A class representing a log item with content, type, and timestamp.
 class LogItem {
   LogItem({
     required this.content,
@@ -16,9 +18,12 @@ class LogItem {
   final DateTime time;
 }
 
+/// A singleton class that manages console storage and logging.
 class ConsoleStorage {
+  /// The shared singleton instance of ConsoleStorage.
   static final shared = ConsoleStorage();
 
+  /// Indicates whether logging is enabled.
   bool enabled = false;
   final ValueNotifier<List<LogItem>> _logs = ValueNotifier([]);
   final ValueNotifier<int> unreadCount = ValueNotifier(0);
@@ -32,14 +37,17 @@ class ConsoleStorage {
     return _logs.value;
   }
 
+  /// Clears all stored logs.
   void clear() {
     _logs.value = [];
   }
 
+  /// Resets the unread log count to zero.
   void resetUnreadCount() {
     unreadCount.value = 0;
   }
 
+  /// Initializes file logging with the given parameters.
   Future<File> zipLog() async {
     if (logZ == null) {
       throw Exception("LogZ is not initialized.");
@@ -47,6 +55,7 @@ class ConsoleStorage {
     return await logZ.zipLog();
   }
 
+  /// Zips the log file and initiates sharing.
   void zipToShareLog() {
     if (logZ == null) {
       throw Exception("LogZ is not initialized.");
@@ -69,6 +78,7 @@ class ConsoleStorage {
     unreadCount.value++;
   }
 
+  /// Logs an informational message.
   void logInfo(String message) {
     _addLog(LogItem(
       content: message,
@@ -77,6 +87,7 @@ class ConsoleStorage {
     ));
   }
 
+  /// Logs an error message.
   void logError(String message) {
     _addLog(LogItem(
       content: message,
@@ -85,6 +96,7 @@ class ConsoleStorage {
     ));
   }
 
+  /// Logs a verbose message.
   void log(String message) {
     _addLog(LogItem(
       content: message,

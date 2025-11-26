@@ -1,6 +1,6 @@
 name: console_flutter
-description: Plugin to show API logs for Flutter.
-version: 1.0.0
+description: Plugin to show API logs for Flutter. Includes a console screen to view logs. Export logs as a zip file.
+version: 1.1.0
 homepage: "https://github.com/kinhvodoi92"
 repository: "https://github.com/kinhvodoi92/console_flutter"
 
@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
-  logz: ^0.0.1
+  logz: ^0.0.2
 
 dev_dependencies:
   flutter_test:

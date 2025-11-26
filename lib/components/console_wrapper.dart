@@ -2,6 +2,7 @@ import 'package:console_flutter/components/console_view.dart';
 import 'package:console_flutter/managers/console_storage.dart';
 import 'package:flutter/material.dart';
 
+/// A wrapper widget that adds a draggable console view to the application.
 class ConsoleWrapper extends StatefulWidget {
   const ConsoleWrapper({
     Key? key,

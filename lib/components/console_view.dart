@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import '../console_flutter.dart';
 
 class ConsoleView extends StatefulWidget {
+  const ConsoleView({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return _ConsoleViewState();

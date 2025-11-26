@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 
 import '../managers/console_storage.dart';
 
+/// A screen that displays the console logs.
 class ConsoleScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -24,7 +25,7 @@ class _ConsoleScreenState extends State<ConsoleScreen> {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       ConsoleStorage.shared.resetUnreadCount();
     });
   }
@@ -40,7 +41,6 @@ class _ConsoleScreenState extends State<ConsoleScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("Console Logs"),
         backgroundColor: Colors.white,
         foregroundColor: Colors.blue,
         leading: IconButton(
@@ -48,6 +48,11 @@ class _ConsoleScreenState extends State<ConsoleScreen> {
           icon: const Icon(Icons.close),
         ),
         actions: [
+          // Zip và chia sẻ Log
+          if (ConsoleStorage.shared.logZ != null)
+            IconButton(
+                onPressed: _exportLog,
+                icon: const Icon(Icons.ios_share_outlined)),
           IconButton(
               onPressed: _decreaseFont, icon: const Icon(Icons.text_decrease)),
           IconButton(
@@ -184,5 +189,9 @@ class _ConsoleScreenState extends State<ConsoleScreen> {
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
+  }
+
+  void _exportLog() {
+    ConsoleStorage.shared.zipToShareLog();
   }
 }
