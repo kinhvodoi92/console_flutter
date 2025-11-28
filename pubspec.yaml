@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
-  logz: ^0.0.3
+  logz: ^0.0.5
 
 dev_dependencies:
   flutter_test:
